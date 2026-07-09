@@ -26,6 +26,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "huidu.h"
+#include "test.h"
+#include "tcs34725.h"
 
 /* USER CODE END Includes */
 
@@ -103,7 +106,8 @@ int main(void)
   MX_USART6_UART_Init();
   MX_USB_OTG_FS_USB_Init();
   /* USER CODE BEGIN 2 */
-
+  OLED_Init();
+  TCS34725_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -113,6 +117,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    Test_All();
   }
   /* USER CODE END 3 */
 }
@@ -163,6 +168,21 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+/**
+  * @brief  HAL UART 接收完成回调
+  * @param  huart: UART 句柄指针
+  * @retval None
+  */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    extern uint8_t huidu_rx_byte;
+    if (huart->Instance == USART6)
+    {
+        HUIDU_RxCallback(huidu_rx_byte);
+        HAL_UART_Receive_IT(&huart6, &huidu_rx_byte, 1);
+    }
+}
 
 /* USER CODE END 4 */
 

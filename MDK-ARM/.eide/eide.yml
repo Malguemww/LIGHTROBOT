@@ -33,6 +33,18 @@ virtualFolder:
                 - path: ../Core/Src/stm32f4xx_it.c
                 - path: ../Core/Src/stm32f4xx_hal_msp.c
               folders: []
+        - name: hard
+          files:
+            - path: ../Core/Hardware/motor.c
+            - path: ../Core/Hardware/servo.c
+            - path: ../Core/Hardware/huidu.c
+            - path: ../Core/Hardware/dongzuo.c
+            - path: ../Core/Hardware/oled.c
+            - path: ../Core/Hardware/mpu6050.c
+            - path: ../Core/Hardware/tcs34725.c
+            - path: ../Core/Hardware/test.c
+            - path: ../Core/Hardware/pwm.c
+          folders: []
     - name: Drivers
       files: []
       folders:
@@ -76,6 +88,7 @@ targets:
         - STM32F407xx
       incList:
         - ../Core/Inc
+        - ../Core/Hardware
         - ../Drivers/STM32F4xx_HAL_Driver/Inc
         - ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
         - ../Drivers/CMSIS/Device/ST/STM32F4xx/Include
