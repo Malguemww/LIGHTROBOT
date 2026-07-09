@@ -33,6 +33,9 @@ virtualFolder:
                 - path: ../Core/Src/stm32f4xx_it.c
                 - path: ../Core/Src/stm32f4xx_hal_msp.c
               folders: []
+        - name: hard
+          files: []
+          folders: []
     - name: Drivers
       files: []
       folders:
